@@ -1,0 +1,13 @@
+class Solution:
+    def newIPAdd(self, S):
+        # code here
+        s = list(map(int,S.split(".")))
+        l = [str(i) for i in s]
+        return (".".join(l))
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        s = input().strip()
+        ob =Solution()
+        ans = ob.newIPAdd(s)
+        print(ans)
