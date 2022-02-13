@@ -1,0 +1,25 @@
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        N = int(input())
+        start = list(map(int,innput().split()))
+        end = list(map(int,innput().split()))
+        ob = Solution()
+        print(ob.maxEvents(start,emd,N))
+
+class Solution:
+    def maxEvents(self,start,end,N):
+        diff = []
+        for i in range(N):
+            diff.append(start[i] - end[i])
+        dic = {}
+        for i in range(N):
+            dic.update({i:diff[i]})
+        sorted_lis = sorted(dic.items(), key=lambda item: item[1])
+        print(sorted_lis)
+        events = 1
+        for i in range(1,N):
+            if start[sorted_lis[i][0]] >= end[sorted_lis[i][0]:
+                events += 1
+        return events
+
