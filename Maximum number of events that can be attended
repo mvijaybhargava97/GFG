@@ -1,25 +1,40 @@
-if __name__ == '__main__':
-    t = int(input())
-    for _ in range(t):
-        N = int(input())
-        start = list(map(int,innput().split()))
-        end = list(map(int,innput().split()))
-        ob = Solution()
-        print(ob.maxEvents(start,emd,N))
 
 class Solution:
-    def maxEvents(self,start,end,N):
-        diff = []
+    def maxEvents(self, start, end, N):
+        # code here 
+        diff = {}
         for i in range(N):
-            diff.append(start[i] - end[i])
-        dic = {}
-        for i in range(N):
-            dic.update({i:diff[i]})
-        sorted_lis = sorted(dic.items(), key=lambda item: item[1])
-        print(sorted_lis)
-        events = 1
-        for i in range(1,N):
-            if start[sorted_lis[i][0]] >= end[sorted_lis[i][0]:
-                events += 1
+            diff.update({i:end[i]})
+        #print(diff)
+        sorted_diff = sorted(diff.items(), key = lambda item : item[1])
+        #print(sorted_diff)
+        lis = [False for i in range(max(end))]
+        events = 0
+        l = list(sorted_diff)
+        for k,v in sorted_diff:
+            for j in range(start[k]-1,end[k]):
+                if not lis[j]:
+                    lis[j] = True
+                    events += 1
+                    break
+#    print(lis)
+#print(events)
         return events
 
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+if __name__ == '__main__': 
+    t = int (input ())
+    for _ in range (t):
+        N=int(input())
+        start=list(map(int,input().split()))
+        end=list(map(int,input().split()))
+        
+        ob = Solution()
+        print(ob.maxEvents(start,end,N))
+# } Driver Code Ends
+
+#114/121 Test Cases Successful
+#Time Limit Exceeded
