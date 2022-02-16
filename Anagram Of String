@@ -1,0 +1,38 @@
+# to be removed to make two strings anagram
+def remAnagram(str1,str2):
+    
+    #add code here
+    l1 = len(str1)
+    l2 = len(str2)
+    s1 = set(str1)
+    s2 = set(str2)
+    ls1 = len(s1)
+    ls2 = len(s2)
+    m = min(ls1,ls2)
+    count = 0
+    if m == l1:
+        for i in s1:
+            if str1.count(i) == str2.count(i):
+                count += str1.count(i)
+            elif str1.count(i) and str2.count(i):
+                count += min(str1.count(i),str2.count(i))
+    else :
+        for i in s2:
+            if str2.count(i) == str1.count(i):
+                count += str2.count(i)
+            elif str1.count(i) and str2.count(i):
+                count += min(str1.count(i),str2.count(i))
+    return l1 + l2 - (count*2)
+        
+    
+    
+
+#{ 
+#  Driver Code Starts
+if __name__=='__main__':
+    t=int(input())
+    for i in range(t):
+        str1=input()
+        str2=input()
+        print(remAnagram(str1,str2))
+# } Driver Code Ends
