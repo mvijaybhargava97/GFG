@@ -1,0 +1,38 @@
+
+class Solution:    
+    def ValidCorner(self,matrix): 
+        l = len(matrix)
+        m = len(matrix[0])
+        for i in range(l-1):
+            count = 0
+            for j in range(i+1,l):
+                for k in range(m):
+                    if matrix[i][k] == matrix[j][k] and matrix[i][k] == 1:
+                        count += 1
+                        if count == 2:
+                            return True
+        return False
+
+#{ 
+#  Driver Code Starts
+#Initial Template for Python 3
+
+
+if __name__ == '__main__':
+    t = int(input())
+    for _ in range(t):
+        r = int(input())
+        c = int(input())
+        line = input().strip().split()
+        mat = [ [0 for _ in range(c)] for _ in range(r) ]
+        for i in range(r):
+            for j in range(c):
+                mat[i][j] = int( line[i*c+j] )
+        ob=Solution()
+        if (ob.ValidCorner(mat)): 
+            print("Yes") 
+        else: 
+            print("No") 
+
+
+# } Driver Code Ends
