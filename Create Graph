@@ -1,0 +1,35 @@
+grid = [[0,1],[1,0],[1,1],[1,0]]
+l = len(grid)
+m = len(grid[0])
+graph = {}
+
+for i in range(l):
+    for j in range(m):
+        node = (i)*m+j+1          
+        
+        if grid[i][j] == 1:
+            graph.update({node:[]})
+            if i >= 1 and j >= 1 and grid[i-1][j-1] == 1 and i <= l-2 and j <= m-2:
+                graph[node].append((i-1)*m+j)
+            
+            if i >= 1 and j >= 0 and i <= l-2 and j <= m-2:
+                if grid[i-1][j] == 1:
+                    graph[node].append((i-1)*m+j+1)
+                if grid[i-1][j+1] == 1:
+                    graph[node].append((i-1)*m+j+2)
+                
+            if i >= 0 and j >= 1 and i <= l-2 and j <= m-2:
+                if grid[i+1][j-1] == 1:
+                    graph[node].append((i+1)*m+j)
+                if grid[i][j-1] == 1:
+                    graph[node].append((i)*m+j)
+                    
+            if i >= 0 and j >= 0 and i <= l-2 and j <= m-2:
+                if grid[i+1][j+1] == 1:
+                    graph[node].append((i+1)*m+j+2)
+                if grid[i][j+1] == 1:
+                    graph[node].append((i)*m+j+2)
+                if grid[i+1][j] == 1:
+                    graph[node].append((i+1)*m+j+1)
+            
+print(graph)
